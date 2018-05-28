@@ -1,0 +1,16 @@
+version: "2"
+services:
+  php:
+    image: saraivagilberto/php7.2-apache-dev
+    ports:
+      - "80:80"    
+    volumes:
+      - ./html:/var/www/html
+    environment:
+      WEB_DOCUMENT_ROOT: "/var/www/html"
+      WEB_PHP_TIMEOUT: 600
+      PHP_DEBUGGER: "xdebug"
+      XDEBUG_REMOTE_AUTOSTART: 1
+      XDEBUG_REMOTE_CONNECT_BACK: 0
+      XDEBUG_REMOTE_HOST: ${DOCKER_HOST_IP}
+      XDEBUG_REMOTE_PORT: 9001
